@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="bookID" />
+    </Key>
+    <Property Name="bookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="publisher" Type="int" Nullable="false" />
+    <Property Name="author" Type="int" Nullable="false" />
+    <Property Name="inportDate" Type="date" Nullable="false" />
+    <Property Name="rfidTag" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookStatus">
+    <Key>
+      <PropertyRef Name="bookStatusID" />
+    </Key>
+    <Property Name="bookStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookType">
+    <Key>
+      <PropertyRef Name="bookTypeID" />
+    </Key>
+    <Property Name="bookTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="publisherID" />
+    </Key>
+    <Property Name="publisherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RFIDTag">
+    <Key>
+      <PropertyRef Name="RFIDTagID" />
+    </Key>
+    <Property Name="RFIDTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="inportDate" Type="date" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="operateTimes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RFIDTagType">
+    <Key>
+      <PropertyRef Name="RFIDTagTypeID" />
+    </Key>
+    <Property Name="RFIDTagTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TagStatus">
+    <Key>
+      <PropertyRef Name="tagStatusID" />
+    </Key>
+    <Property Name="tagStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="transactionID" />
+    </Key>
+    <Property Name="transactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="bookID" Type="int" Nullable="false" />
+    <Property Name="borrowDate" Type="datetime" Nullable="false" />
+    <Property Name="expectedReturn" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionStatus">
+    <Key>
+      <PropertyRef Name="transactionStatusID" />
+    </Key>
+    <Property Name="transactionStatusID" Type="int" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateOfBirth" Type="date" Nullable="false" />
+    <Property Name="phoneNumber" Type="nchar" MaxLength="12" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="role" Type="int" Nullable="false" />
+    <Property Name="rfidTag" Type="int" Nullable="false" />
+    <Property Name="PINNum" Type="nvarchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Writer">
+    <Key>
+      <PropertyRef Name="writerID" />
+    </Key>
+    <Property Name="writerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Book_BookStatus">
+    <End Role="BookStatus" Type="Self.BookStatus" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookStatus">
+        <PropertyRef Name="bookStatusID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_BookType">
+    <End Role="BookType" Type="Self.BookType" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookType">
+        <PropertyRef Name="bookTypeID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Publisher">
+    <End Role="Publisher" Type="Self.Publisher" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="publisherID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="publisher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_RFIDTag">
+    <End Role="RFIDTag" Type="Self.RFIDTag" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RFIDTag">
+        <PropertyRef Name="RFIDTagID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="rfidTag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Writer">
+    <End Role="Writer" Type="Self.Writer" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Writer">
+        <PropertyRef Name="writerID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RFIDTag_RFIDTagType">
+    <End Role="RFIDTagType" Type="Self.RFIDTagType" Multiplicity="1" />
+    <End Role="RFIDTag" Type="Self.RFIDTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RFIDTagType">
+        <PropertyRef Name="RFIDTagTypeID" />
+      </Principal>
+      <Dependent Role="RFIDTag">
+        <PropertyRef Name="type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RFIDTag_TagStatus">
+    <End Role="TagStatus" Type="Self.TagStatus" Multiplicity="1" />
+    <End Role="RFIDTag" Type="Self.RFIDTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagStatus">
+        <PropertyRef Name="tagStatusID" />
+      </Principal>
+      <Dependent Role="RFIDTag">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="bookID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="bookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_TransactionStatus">
+    <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionStatus">
+        <PropertyRef Name="transactionStatusID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_RFIDTag">
+    <End Role="RFIDTag" Type="Self.RFIDTag" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RFIDTag">
+        <PropertyRef Name="RFIDTagID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="rfidTag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryDemoModelStoreContainer">
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookStatus" EntityType="Self.BookStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookType" EntityType="Self.BookType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RFIDTag" EntityType="Self.RFIDTag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RFIDTagType" EntityType="Self.RFIDTagType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagStatus" EntityType="Self.TagStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Writer" EntityType="Self.Writer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Book_BookStatus" Association="Self.FK_Book_BookStatus">
+      <End Role="BookStatus" EntitySet="BookStatus" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_BookType" Association="Self.FK_Book_BookType">
+      <End Role="BookType" EntitySet="BookType" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Publisher" Association="Self.FK_Book_Publisher">
+      <End Role="Publisher" EntitySet="Publisher" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_RFIDTag" Association="Self.FK_Book_RFIDTag">
+      <End Role="RFIDTag" EntitySet="RFIDTag" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Writer" Association="Self.FK_Book_Writer">
+      <End Role="Writer" EntitySet="Writer" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RFIDTag_RFIDTagType" Association="Self.FK_RFIDTag_RFIDTagType">
+      <End Role="RFIDTagType" EntitySet="RFIDTagType" />
+      <End Role="RFIDTag" EntitySet="RFIDTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RFIDTag_TagStatus" Association="Self.FK_RFIDTag_TagStatus">
+      <End Role="TagStatus" EntitySet="TagStatus" />
+      <End Role="RFIDTag" EntitySet="RFIDTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Book" Association="Self.FK_Transaction_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_TransactionStatus" Association="Self.FK_Transaction_TransactionStatus">
+      <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_RFIDTag" Association="Self.FK_User_RFIDTag">
+      <End Role="RFIDTag" EntitySet="RFIDTag" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

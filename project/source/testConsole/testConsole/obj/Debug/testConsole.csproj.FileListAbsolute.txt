@@ -1,0 +1,8 @@
+E:\C# projects\testConsole\testConsole\obj\Debug\testConsole.csprojResolveAssemblyReference.cache
+E:\C# projects\testConsole\testConsole\bin\Debug\testConsole.exe.config
+E:\C# projects\testConsole\testConsole\bin\Debug\testConsole.exe
+E:\C# projects\testConsole\testConsole\bin\Debug\testConsole.pdb
+E:\C# projects\testConsole\testConsole\bin\Debug\EntityFramework.dll
+E:\C# projects\testConsole\testConsole\bin\Debug\EntityFramework.xml
+E:\C# projects\testConsole\testConsole\obj\Debug\testConsole.exe
+E:\C# projects\testConsole\testConsole\obj\Debug\testConsole.pdb

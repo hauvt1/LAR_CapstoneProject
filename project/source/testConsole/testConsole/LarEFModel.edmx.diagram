@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c9b1f399ca44e80a5a0e10f06f8764d" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryDemoModel.Book" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.BookStatu" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.BookType" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.Publisher" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.RFIDTag" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.RFIDTagType" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.Role" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.sysdiagram" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.TagStatu" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.Transaction" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.TransactionStatu" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.User" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDemoModel.Writer" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Book_BookStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Book_BookType" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Book_Publisher" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Book_RFIDTag" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Book_Writer" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Transaction_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_RFIDTag_RFIDTagType" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_RFIDTag_TagStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_User_RFIDTag" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Transaction_TransactionStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDemoModel.FK_Transaction_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
